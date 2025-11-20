@@ -117,7 +117,7 @@ public class HashMap2D<R, C, V> implements Map2D<R, C, V>
     @Override
     public Map<R, Map<C, V>> rowMapView() {
         Map<R, Map<C, V>> result = new HashMap<>();
-        data.forEach((r, row) -> result.put(r, Collections.unmodifiableMap(new HashMap<>(row))));
+        data.forEach((r, row) -> result.put(r, Map.copyOf(row)));
         return Collections.unmodifiableMap(result);
     }
 
